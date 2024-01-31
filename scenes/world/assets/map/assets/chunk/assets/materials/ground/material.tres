@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=10 format=3 uid="uid://c1h6qmm38v3e8"]
+
+[ext_resource type="Shader" uid="uid://bvbmxxtlfngcp" path="res://scenes/world/assets/map/assets/chunk/assets/materials/ground/shader.tres" id="1_31xya"]
+[ext_resource type="Texture2D" uid="uid://bgio438jn02nq" path="res://scenes/world/assets/map/assets/chunk/assets/materials/ground/assets/ground_068/Ground068_2K-PNG_Color.png" id="2_4os7p"]
+[ext_resource type="Texture2D" uid="uid://r46ow5pa7wcr" path="res://scenes/world/assets/map/assets/chunk/assets/materials/ground/assets/ground_048/Ground048_1K-PNG_Color.png" id="2_ouqow"]
+[ext_resource type="Texture2D" uid="uid://gimgutdntajj" path="res://scenes/world/assets/map/assets/chunk/assets/materials/ground/assets/ground_068/Ground068_2K-PNG_AmbientOcclusion.png" id="3_fdqif"]
+[ext_resource type="Texture2D" uid="uid://6yd4x5dew8qv" path="res://scenes/world/assets/map/assets/chunk/assets/materials/ground/assets/ground_068/Ground068_2K-PNG_NormalGL.png" id="4_pls2t"]
+[ext_resource type="Texture2D" uid="uid://0esdgchg11a6" path="res://scenes/world/assets/map/assets/chunk/assets/materials/ground/assets/ground_068/Ground068_2K-PNG_Roughness.png" id="5_68w4j"]
+[ext_resource type="Texture2D" uid="uid://d4gp4mu7fkgsg" path="res://scenes/world/assets/map/assets/chunk/assets/materials/ground/assets/ground_048/Ground048_1K-PNG_AmbientOcclusion.png" id="5_s1na2"]
+[ext_resource type="Texture2D" uid="uid://cwu3x57078mns" path="res://scenes/world/assets/map/assets/chunk/assets/materials/ground/assets/ground_048/Ground048_1K-PNG_NormalGL.png" id="7_vfi7a"]
+[ext_resource type="Texture2D" uid="uid://dae8bhhbe7hcg" path="res://scenes/world/assets/map/assets/chunk/assets/materials/ground/assets/ground_048/Ground048_1K-PNG_Roughness.png" id="9_xfbmp"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_31xya")
+shader_parameter/Albedo = ExtResource("2_4os7p")
+shader_parameter/Albedo2 = ExtResource("2_ouqow")
+shader_parameter/Roughness = ExtResource("5_68w4j")
+shader_parameter/Roughness2 = ExtResource("9_xfbmp")
+shader_parameter/AmbientOcclusion = ExtResource("3_fdqif")
+shader_parameter/AmbientOcclusion2 = ExtResource("5_s1na2")
+shader_parameter/Normal = ExtResource("4_pls2t")
+shader_parameter/Normal2 = ExtResource("7_vfi7a")
