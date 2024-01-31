@@ -10,15 +10,23 @@ const CHUNK_PREFAB := preload("res://scenes/world/assets/map/assets/chunk/chunk.
 var chunks: Array[Chunk] = []
 @onready var chunk_parent := $Chunks
 
-const NOISE_SCALE: float = 0.3
+const NOISE_SCALE: float = 0.1
 const NOISE_AMPLITUDE: float = 100
 const NOISE_OFFSET := 100000 * Vector3(1, 0, 1)
+const NOISE_LAYERS: int = 4
+const NOISE_PERSISTENCE: float = 0.5
+const NOISE_LACUNARITY: float = 2.0
+
 var noise := FastNoiseLite.new()
 var surface_tool := SurfaceTool.new()
 
-const MAP_SIZE := 250
+const MAP_SIZE := 1000
 
 func _ready():
+	# seed noise
+	noise.seed = randi()
+	print(noise.seed)
+	# generate map
 	var offset = CHUNK_RADIUS * Vector3(1, 0, 1)
 	
 	for x in range(-MAP_SIZE/2, MAP_SIZE/2, CHUNK_SIZE):
@@ -93,9 +101,24 @@ func _generate_mesh(center: Vector3) -> ArrayMesh:
 	
 	return array_mesh
 
+#func _calculate_noise_height(point: Vector3) -> float:
+	#var sample_point = NOISE_SCALE * point + NOISE_OFFSET
+	#var noise_value = noise.get_noise_2d(sample_point.x, sample_point.z)
+	#var height = NOISE_AMPLITUDE * noise_value
+	#
+	#return height
+
 func _calculate_noise_height(point: Vector3) -> float:
-	var sample_point = NOISE_SCALE * point + NOISE_OFFSET
-	var noise_value = noise.get_noise_2d(sample_point.x, sample_point.z)
-	var height = NOISE_AMPLITUDE * noise_value
-	
-	return height
+	var height = 0.0
+	var amplitude = 1.0
+	var frequency = 1.0
+
+	for _i in range(NOISE_LAYERS):
+		var sample_point = NOISE_SCALE * frequency * point + NOISE_OFFSET
+		var noise_value = noise.get_noise_2d(sample_point.x, sample_point.z)
+		height += amplitude * noise_value
+
+		amplitude *= NOISE_PERSISTENCE
+		frequency *= NOISE_LACUNARITY
+
+	return NOISE_AMPLITUDE * height
