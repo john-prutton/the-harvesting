@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://df0gywy6c6333"]
+
+[ext_resource type="Script" path="res://scenes/world/assets/map/controller.gd" id="1_08xhx"]
+
+[node name="Map" type="Node3D"]
+script = ExtResource("1_08xhx")
+
+[node name="Chunks" type="Node" parent="."]
