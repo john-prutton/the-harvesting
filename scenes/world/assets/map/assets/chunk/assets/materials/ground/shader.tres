@@ -41,7 +41,8 @@ parameter_name = "Normal2"
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3abt8"]
 noise_type = 5
-seed = 8
+seed = 4
+frequency = 0.0513
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qo8af"]
 seamless = true
@@ -186,7 +187,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-585.445, 436.487)
 nodes/fragment/0/position = Vector2(2480, 1420)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_33i71")
 nodes/fragment/2/position = Vector2(560, -40)

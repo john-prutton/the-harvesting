@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bprab4p8ej6sa"]
 
-[ext_resource type="Script" path="res://scenes/world/controller.gd" id="1_6k626"]
-[ext_resource type="PackedScene" uid="uid://df0gywy6c6333" path="res://scenes/world/assets/map/scene.tscn" id="2_3uf37"]
+[ext_resource type="Script" path="res://scenes/world/controller.gd" id="1_iv8td"]
+[ext_resource type="PackedScene" uid="uid://df0gywy6c6333" path="res://scenes/world/assets/map/scene.tscn" id="2_lf4or"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p6dfl"]
 sky_top_color = Color(0.0431373, 0.247059, 0.380392, 1)
@@ -23,7 +23,7 @@ albedo_color = Color(0.913725, 0, 0.509804, 1)
 material = SubResource("StandardMaterial3D_411j8")
 
 [node name="World" type="Node3D"]
-script = ExtResource("1_6k626")
+script = ExtResource("1_iv8td")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.877802, -0.453945, 0.152962, 0.461678, -0.886876, 0.0174524, 0.127736, 0.0859391, 0.988078, -0.313385, -0.606958, -1.41065)
@@ -33,11 +33,11 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_duwmr")
 
-[node name="Map" parent="." instance=ExtResource("2_3uf37")]
+[node name="Map" parent="." instance=ExtResource("2_lf4or")]
 
 [node name="Player" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.981627, -0.0881058, 0.16925, 0, 0.887011, 0.461749, -0.190809, 0.453265, -0.870714, 0, 106.531, 16.915)
+transform = Transform3D(1, 0, 0, 0, 0.760406, 0.649448, 0, -0.649448, 0.760406, -6.35955, 45, 45.6875)
 mesh = SubResource("CapsuleMesh_wo2my")
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 1.49012e-08, 1.49012e-08, -2.23517e-08, 1, -2.98023e-08, 1.49012e-08, 0, 1, -2.38419e-07, 0.52, 0.0262117)
+transform = Transform3D(1, 1.49012e-08, 1.49012e-08, -2.23517e-08, 1, -2.98023e-08, 1.49012e-08, 0, 1, 0, 0.8, 0)

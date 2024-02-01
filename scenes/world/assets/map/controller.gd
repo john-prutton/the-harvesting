@@ -1,16 +1,16 @@
 @tool
 extends Node3D
 
-const VERTEX_GAP: float = 1.0
+const VERTEX_GAP: float = 1
 const VERTEX_COUNT: int = 50
 
 const CHUNK_SIZE: int = int(VERTEX_COUNT * VERTEX_GAP)
 const CHUNK_RADIUS: int = CHUNK_SIZE / 2
-const CHUNK_PREFAB := preload("res://scenes/world/assets/map/assets/chunk/chunk.tscn")
+const CHUNK_PREFAB := preload("res://scenes/world/assets/map/assets/chunk/scene.tscn")
 var chunks: Array[Chunk] = []
 @onready var chunk_parent := $Chunks
 
-const NOISE_SCALE: float = 0.1
+const NOISE_SCALE: float = 0.3
 const NOISE_AMPLITUDE: float = 100
 const NOISE_OFFSET := 100000 * Vector3(1, 0, 1)
 const NOISE_LAYERS: int = 4
@@ -21,18 +21,18 @@ var noise := FastNoiseLite.new()
 var surface_tool := SurfaceTool.new()
 
 const MAP_SIZE := 1000
+const PLATEAU_RADIUS := 200
 
-func _ready():
-	# seed noise
+func _ready(): _generate_map()
+
+func _generate_map():
 	noise.seed = randi()
-	print(noise.seed)
-	# generate map
 	var offset = CHUNK_RADIUS * Vector3(1, 0, 1)
 	
 	for x in range(-MAP_SIZE/2, MAP_SIZE/2, CHUNK_SIZE):
 		for z in range(-MAP_SIZE/2, MAP_SIZE/2, CHUNK_SIZE):
 			_generate_chunk(Vector3(x, 0, z) + offset)
-	
+
 func _generate_chunk(_position: Vector3):
 	# spawn chunk & add to scene
 	var chunk := CHUNK_PREFAB.instantiate()
@@ -62,7 +62,7 @@ func _generate_mesh(center: Vector3) -> ArrayMesh:
 			var offset := CHUNK_SIZE * Vector3(0.5, 0, 0.5)
 			var vertex_position := VERTEX_GAP * Vector3(x, 0, z) - offset
 			
-			vertex_position.y = _calculate_noise_height(vertex_position+center)
+			vertex_position.y = _calculate_vertex_height(vertex_position+center)
 			surface_tool.add_vertex(vertex_position)
 			
 			# if on the top or left edge, exit early
@@ -101,12 +101,16 @@ func _generate_mesh(center: Vector3) -> ArrayMesh:
 	
 	return array_mesh
 
-#func _calculate_noise_height(point: Vector3) -> float:
-	#var sample_point = NOISE_SCALE * point + NOISE_OFFSET
-	#var noise_value = noise.get_noise_2d(sample_point.x, sample_point.z)
-	#var height = NOISE_AMPLITUDE * noise_value
-	#
-	#return height
+func _calculate_vertex_height(point: Vector3) -> float:
+	var noise_height := _calculate_noise_height(point)
+	noise_height = (1 + noise_height) / 2
+	var distance := inverse_lerp(0, PLATEAU_RADIUS, point.length())
+
+	if (distance < 1):
+		var inverse_sigmoid_value = (1 - (1 / (1 + exp(6 * (2 * distance - 1)))))
+		noise_height = noise_height * lerp(0.1, 1.0, inverse_sigmoid_value)
+
+	return NOISE_AMPLITUDE * noise_height
 
 func _calculate_noise_height(point: Vector3) -> float:
 	var height = 0.0
@@ -121,4 +125,4 @@ func _calculate_noise_height(point: Vector3) -> float:
 		amplitude *= NOISE_PERSISTENCE
 		frequency *= NOISE_LACUNARITY
 
-	return NOISE_AMPLITUDE * height
+	return height
