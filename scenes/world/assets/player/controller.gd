@@ -10,17 +10,22 @@ const SENSITIVITY = 0.004
 const BOB_FREQ = 2.4
 const BOB_AMP = 0.08
 var t_bob = 0.0
+var last_step = 0
+
+#sounds
+@export var gravel_footsteps: Array[AudioStreamMP3]
+
 
 #fov variables
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = 9.8
+var gravity = 9.81
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
-
+@onready var audio_player = $AudioStreamPlayer3D
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -75,7 +80,22 @@ func _physics_process(delta):
 
 
 func _headbob(time) -> Vector3:
+	var timing = 0.9
 	var pos = Vector3.ZERO
-	pos.y = sin(time * BOB_FREQ) * BOB_AMP
+	var raw_y = sin(time * BOB_FREQ)
+	pos.y =  raw_y * BOB_AMP
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
+	var step = sign(raw_y)
+	
+	if (raw_y < -timing or raw_y > timing) and step != last_step:
+		_handle_audio()
+		last_step = step
+		
 	return pos
+
+func _handle_audio():
+	if audio_player.playing: return
+	var sound = gravel_footsteps.pick_random()
+	audio_player.stream = sound
+	audio_player.play()
+	
