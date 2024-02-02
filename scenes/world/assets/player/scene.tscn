@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ke6e7vbmojpm"]
+[gd_scene load_steps=25 format=3 uid="uid://ke6e7vbmojpm"]
 
 [ext_resource type="Script" path="res://scenes/world/assets/player/controller.gd" id="1_rafh1"]
 [ext_resource type="AudioStream" uid="uid://cirs45xkt32e1" path="res://scenes/world/assets/player/assets/sounds/foot-steps/gravel/1.mp3" id="2_p1gjd"]
@@ -11,6 +11,16 @@
 [ext_resource type="AudioStream" uid="uid://dcek64021ppuk" path="res://scenes/world/assets/player/assets/sounds/foot-steps/gravel/8.mp3" id="9_pc5sy"]
 [ext_resource type="AudioStream" uid="uid://ppidrhwu6fh1" path="res://scenes/world/assets/player/assets/sounds/foot-steps/gravel/9.mp3" id="10_yvy6k"]
 [ext_resource type="AudioStream" uid="uid://6jy5xn46m115" path="res://scenes/world/assets/player/assets/sounds/foot-steps/gravel/10.mp3" id="11_4ybpg"]
+[ext_resource type="AudioStream" uid="uid://du6a361bultsa" path="res://scenes/world/assets/player/assets/sounds/foot-steps/grass/1.mp3" id="12_i75cm"]
+[ext_resource type="AudioStream" uid="uid://dcimjauq6cxel" path="res://scenes/world/assets/player/assets/sounds/foot-steps/grass/2.mp3" id="13_adm35"]
+[ext_resource type="AudioStream" uid="uid://5t2oprj3s1u7" path="res://scenes/world/assets/player/assets/sounds/foot-steps/grass/3.mp3" id="14_g1wa0"]
+[ext_resource type="AudioStream" uid="uid://dqfbkfbxk4hyb" path="res://scenes/world/assets/player/assets/sounds/foot-steps/grass/4.mp3" id="15_csfjc"]
+[ext_resource type="AudioStream" uid="uid://dfjel5cgil8by" path="res://scenes/world/assets/player/assets/sounds/foot-steps/grass/5.mp3" id="16_hkeq6"]
+[ext_resource type="AudioStream" uid="uid://dwgq4hmh3tbvh" path="res://scenes/world/assets/player/assets/sounds/foot-steps/grass/6.mp3" id="17_22tpc"]
+[ext_resource type="AudioStream" uid="uid://cixu1g5e3j35p" path="res://scenes/world/assets/player/assets/sounds/foot-steps/grass/7.mp3" id="18_pw88g"]
+[ext_resource type="AudioStream" uid="uid://bscdkcu283trs" path="res://scenes/world/assets/player/assets/sounds/foot-steps/grass/8.mp3" id="19_bnd0d"]
+[ext_resource type="AudioStream" uid="uid://cpv61g2mk3ua6" path="res://scenes/world/assets/player/assets/sounds/foot-steps/grass/9.mp3" id="20_lla4s"]
+[ext_resource type="AudioStream" uid="uid://1aafkuvqktdt" path="res://scenes/world/assets/player/assets/sounds/foot-steps/grass/10.mp3" id="21_56qd7"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hoihs"]
 
@@ -23,6 +33,7 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_rafh1")
 gravel_footsteps = Array[AudioStreamMP3]([ExtResource("2_p1gjd"), ExtResource("3_tqvvb"), ExtResource("4_3kf6d"), ExtResource("5_ptoof"), ExtResource("6_63m5j"), ExtResource("7_iu7jd"), ExtResource("8_iym3v"), ExtResource("9_pc5sy"), ExtResource("10_yvy6k"), ExtResource("11_4ybpg")])
+grass_footsteps = Array[AudioStreamMP3]([ExtResource("12_i75cm"), ExtResource("13_adm35"), ExtResource("14_g1wa0"), ExtResource("15_csfjc"), ExtResource("16_hkeq6"), ExtResource("17_22tpc"), ExtResource("18_pw88g"), ExtResource("19_bnd0d"), ExtResource("20_lla4s"), ExtResource("21_56qd7")])
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_hoihs")
@@ -37,3 +48,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.600857, 0)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamMP3_1rnup")
+volume_db = -28.0

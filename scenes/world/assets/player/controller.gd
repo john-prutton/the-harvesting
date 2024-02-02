@@ -14,8 +14,9 @@ var step_timing = 0.8
 var step = true
 
 #sounds
+var foot_steps: Array[Array]
 @export var gravel_footsteps: Array[AudioStreamMP3]
-
+@export var grass_footsteps: Array[AudioStreamMP3]
 
 #fov variables
 const BASE_FOV = 75.0
@@ -30,6 +31,7 @@ var gravity = 9.81
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	foot_steps = [gravel_footsteps,grass_footsteps]
 
 
 func _unhandled_input(event):
@@ -94,6 +96,7 @@ func _headbob(time) -> Vector3:
 	return pos
 
 func _handle_audio():
-	var sound = gravel_footsteps.pick_random()
+	var sound = foot_steps[0].pick_random()
 	audio_player.stream = sound
+	
 	audio_player.play()
