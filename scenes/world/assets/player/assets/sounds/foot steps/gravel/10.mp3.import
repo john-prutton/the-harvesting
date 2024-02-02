@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://6jy5xn46m115"
+path="res://.godot/imported/10.mp3-07662222d6515b7d61c611fe2cfc6139.mp3str"
+
+[deps]
+
+source_file="res://scenes/world/assets/player/assets/sounds/foot steps/gravel/10.mp3"
+dest_files=["res://.godot/imported/10.mp3-07662222d6515b7d61c611fe2cfc6139.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
