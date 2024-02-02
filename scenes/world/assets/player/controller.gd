@@ -3,12 +3,14 @@ extends CharacterBody3D
 var speed
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 8.0
-const JUMP_VELOCITY = 4.8
+const JUMP_VELOCITY = 6
 const SENSITIVITY = 0.004
+var mass = 2.5
 
 #bob variables
 const BOB_FREQ = 2.4
-const BOB_AMP = 0.08
+const BOB_AMP_Y = 0.08
+const BOB_AMP_X = 0.15
 var t_bob = 0.0
 var step_timing = 0.8
 var step = true
@@ -38,13 +40,13 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(80))
 
 
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y -= gravity * delta
+		velocity.y -= gravity*mass * delta
 
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -85,8 +87,8 @@ func _physics_process(delta):
 func _headbob(time) -> Vector3:
 	var pos = Vector3.ZERO
 	var raw_y = sin(time * BOB_FREQ)
-	pos.y =  raw_y * BOB_AMP
-	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
+	pos.y =  raw_y * BOB_AMP_Y
+	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP_X
 	
 	if (raw_y < -step_timing) and not step:
 		_handle_audio()
@@ -96,7 +98,6 @@ func _headbob(time) -> Vector3:
 	return pos
 
 func _handle_audio():
-	var sound = foot_steps[0].pick_random()
+	var sound = foot_steps[1].pick_random()
 	audio_player.stream = sound
-	
 	audio_player.play()
