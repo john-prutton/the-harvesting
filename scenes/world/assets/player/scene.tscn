@@ -1,16 +1,16 @@
 [gd_scene load_steps=15 format=3 uid="uid://ke6e7vbmojpm"]
 
 [ext_resource type="Script" path="res://scenes/world/assets/player/controller.gd" id="1_rafh1"]
-[ext_resource type="AudioStream" uid="uid://cirs45xkt32e1" path="res://scenes/world/assets/player/assets/sounds/foot steps/gravel/1.mp3" id="2_xh6eh"]
-[ext_resource type="AudioStream" uid="uid://ddhboknl02ndd" path="res://scenes/world/assets/player/assets/sounds/foot steps/gravel/2.mp3" id="3_n1sju"]
-[ext_resource type="AudioStream" uid="uid://j5kgi211kanq" path="res://scenes/world/assets/player/assets/sounds/foot steps/gravel/3.mp3" id="4_2dmfp"]
-[ext_resource type="AudioStream" uid="uid://byk0ikkjj4c8u" path="res://scenes/world/assets/player/assets/sounds/foot steps/gravel/4.mp3" id="5_n1jtf"]
-[ext_resource type="AudioStream" uid="uid://bggtnlhoj44xc" path="res://scenes/world/assets/player/assets/sounds/foot steps/gravel/5.mp3" id="6_g7eip"]
-[ext_resource type="AudioStream" uid="uid://v6ueh8a2vaby" path="res://scenes/world/assets/player/assets/sounds/foot steps/gravel/6.mp3" id="7_s5dpl"]
-[ext_resource type="AudioStream" uid="uid://dep4lnc2euquw" path="res://scenes/world/assets/player/assets/sounds/foot steps/gravel/7.mp3" id="8_owm48"]
-[ext_resource type="AudioStream" uid="uid://dcek64021ppuk" path="res://scenes/world/assets/player/assets/sounds/foot steps/gravel/8.mp3" id="9_1vnit"]
-[ext_resource type="AudioStream" uid="uid://ppidrhwu6fh1" path="res://scenes/world/assets/player/assets/sounds/foot steps/gravel/9.mp3" id="10_sreu6"]
-[ext_resource type="AudioStream" uid="uid://6jy5xn46m115" path="res://scenes/world/assets/player/assets/sounds/foot steps/gravel/10.mp3" id="11_3a1k7"]
+[ext_resource type="AudioStream" uid="uid://cirs45xkt32e1" path="res://scenes/world/assets/player/assets/sounds/foot-steps/gravel/1.mp3" id="2_p1gjd"]
+[ext_resource type="AudioStream" uid="uid://ddhboknl02ndd" path="res://scenes/world/assets/player/assets/sounds/foot-steps/gravel/2.mp3" id="3_tqvvb"]
+[ext_resource type="AudioStream" uid="uid://j5kgi211kanq" path="res://scenes/world/assets/player/assets/sounds/foot-steps/gravel/3.mp3" id="4_3kf6d"]
+[ext_resource type="AudioStream" uid="uid://byk0ikkjj4c8u" path="res://scenes/world/assets/player/assets/sounds/foot-steps/gravel/4.mp3" id="5_ptoof"]
+[ext_resource type="AudioStream" uid="uid://bggtnlhoj44xc" path="res://scenes/world/assets/player/assets/sounds/foot-steps/gravel/5.mp3" id="6_63m5j"]
+[ext_resource type="AudioStream" uid="uid://v6ueh8a2vaby" path="res://scenes/world/assets/player/assets/sounds/foot-steps/gravel/6.mp3" id="7_iu7jd"]
+[ext_resource type="AudioStream" uid="uid://dep4lnc2euquw" path="res://scenes/world/assets/player/assets/sounds/foot-steps/gravel/7.mp3" id="8_iym3v"]
+[ext_resource type="AudioStream" uid="uid://dcek64021ppuk" path="res://scenes/world/assets/player/assets/sounds/foot-steps/gravel/8.mp3" id="9_pc5sy"]
+[ext_resource type="AudioStream" uid="uid://ppidrhwu6fh1" path="res://scenes/world/assets/player/assets/sounds/foot-steps/gravel/9.mp3" id="10_yvy6k"]
+[ext_resource type="AudioStream" uid="uid://6jy5xn46m115" path="res://scenes/world/assets/player/assets/sounds/foot-steps/gravel/10.mp3" id="11_4ybpg"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hoihs"]
 
@@ -22,7 +22,7 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_rafh1")
-gravel_footsteps = Array[AudioStreamMP3]([ExtResource("2_xh6eh"), ExtResource("3_n1sju"), ExtResource("4_2dmfp"), ExtResource("5_n1jtf"), ExtResource("6_g7eip"), ExtResource("7_s5dpl"), ExtResource("8_owm48"), ExtResource("9_1vnit"), ExtResource("10_sreu6"), ExtResource("11_3a1k7")])
+gravel_footsteps = Array[AudioStreamMP3]([ExtResource("2_p1gjd"), ExtResource("3_tqvvb"), ExtResource("4_3kf6d"), ExtResource("5_ptoof"), ExtResource("6_63m5j"), ExtResource("7_iu7jd"), ExtResource("8_iym3v"), ExtResource("9_pc5sy"), ExtResource("10_yvy6k"), ExtResource("11_4ybpg")])
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_hoihs")
