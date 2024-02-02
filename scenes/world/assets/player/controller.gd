@@ -10,7 +10,8 @@ const SENSITIVITY = 0.004
 const BOB_FREQ = 2.4
 const BOB_AMP = 0.08
 var t_bob = 0.0
-var last_step = 0
+var step_timing = 0.8
+var step = true
 
 #sounds
 @export var gravel_footsteps: Array[AudioStreamMP3]
@@ -80,22 +81,19 @@ func _physics_process(delta):
 
 
 func _headbob(time) -> Vector3:
-	var timing = 0.9
 	var pos = Vector3.ZERO
 	var raw_y = sin(time * BOB_FREQ)
 	pos.y =  raw_y * BOB_AMP
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
-	var step = sign(raw_y)
 	
-	if (raw_y < -timing or raw_y > timing) and step != last_step:
+	if (raw_y < -step_timing) and not step:
 		_handle_audio()
-		last_step = step
+		step = true
+	elif raw_y > -step_timing: step = false
 		
 	return pos
 
 func _handle_audio():
-	if audio_player.playing: return
 	var sound = gravel_footsteps.pick_random()
 	audio_player.stream = sound
 	audio_player.play()
-	
