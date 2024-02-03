@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbugrl8d1pf5j"]
+
+[ext_resource type="Script" path="res://scenes/world/assets/map/assets/environment/controller.gd" id="1_v2cgq"]
+
+[node name="Environment" type="Node3D"]
+script = ExtResource("1_v2cgq")
+
+[node name="Spawnables" type="Node" parent="."]
