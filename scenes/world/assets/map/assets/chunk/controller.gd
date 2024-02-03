@@ -1,6 +1,6 @@
-@tool
+
 class_name Chunk
-extends Node3D
+extends StaticBody3D
 
 @onready var mesh_instance: MeshInstance3D = $MeshInstance3D
 @onready var collision_shape: CollisionShape3D = $CollisionShape3D
