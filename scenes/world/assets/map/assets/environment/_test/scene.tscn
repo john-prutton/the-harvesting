@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmopid4mojlwy"]
+
+[ext_resource type="PackedScene" uid="uid://beqx0jml87seb" path="res://scenes/world/assets/map/assets/environment/assets/tree/prefab.blend" id="1_ijb8g"]
+
+[node name="Test" type="Node3D"]
+
+[node name="prefab" parent="." instance=ExtResource("1_ijb8g")]
