@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhtan1dhdi7df"]
+
+[ext_resource type="PackedScene" uid="uid://bdfcs4teh56cd" path="res://scenes/world/assets/player/assets/flashlight/prefab.blend" id="1_30h55"]
+
+[node name="Flashlight" type="Node3D"]
+
+[node name="prefab" parent="." instance=ExtResource("1_30h55")]
+transform = Transform3D(1, -0.00074922, 0.000434784, 0.000749579, 0.999999, -0.000836448, -0.000434166, 0.00083677, 1, 0, 0, 0.402725)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, -0.000749216, 0.000434793, 0.000749579, 0.999999, -0.000836444, -0.000434166, 0.00083677, 1, 2.91038e-11, 0, -0.0159261)
+light_color = Color(0.866667, 0.811765, 0.592157, 1)
+light_energy = 5.885
+light_indirect_energy = 3.901
+light_volumetric_fog_energy = 0.0
+light_size = 0.74
+light_specular = 11.211
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 0.0
+distance_fade_shadow = 3807.49
+distance_fade_length = 3738.9
+spot_attenuation = 0.176776
+spot_angle = 24.17
+spot_angle_attenuation = 0.57435
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, -0.000749216, 0.000434793, 0.000749579, 0.999999, -0.000836444, -0.000434166, 0.00083677, 1, 2.91038e-11, 0, -0.0159261)
+light_color = Color(0.941176, 0.890196, 0.694118, 1)
+light_energy = 0.419
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
+shadow_enabled = true
+shadow_opacity = 0.82
+shadow_blur = 2.532
+distance_fade_enabled = true
+distance_fade_begin = 1.0
+distance_fade_shadow = 2.0
+distance_fade_length = 1.0
+omni_range = 0.2

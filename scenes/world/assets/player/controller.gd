@@ -8,9 +8,9 @@ const SENSITIVITY = 0.004
 var mass = 2.5
 
 #bob variables
-const BOB_FREQ = 2.4
+const BOB_FREQ = 2.2
 const BOB_AMP_Y = 0.08
-const BOB_AMP_X = 0.15
+const BOB_AMP_X = 0.05
 var t_bob = 0.0
 var step_timing = 0.8
 var step = true
@@ -22,14 +22,16 @@ var foot_steps: Array[Array]
 
 #fov variables
 const BASE_FOV = 75.0
-const FOV_CHANGE = 1.5
+const FOV_CHANGE = 1.3
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 9.81
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
+@onready var item = $Head/Item
 @onready var audio_player = $AudioStreamPlayer3D
+
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -41,6 +43,7 @@ func _unhandled_input(event):
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(80))
+		item.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(80))
 
 
 func _physics_process(delta):

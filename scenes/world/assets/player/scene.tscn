@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ke6e7vbmojpm"]
+[gd_scene load_steps=26 format=3 uid="uid://ke6e7vbmojpm"]
 
 [ext_resource type="Script" path="res://scenes/world/assets/player/controller.gd" id="1_rafh1"]
 [ext_resource type="AudioStream" uid="uid://cirs45xkt32e1" path="res://scenes/world/assets/player/assets/sounds/foot-steps/gravel/1.mp3" id="2_p1gjd"]
@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://bscdkcu283trs" path="res://scenes/world/assets/player/assets/sounds/foot-steps/grass/8.mp3" id="19_bnd0d"]
 [ext_resource type="AudioStream" uid="uid://cpv61g2mk3ua6" path="res://scenes/world/assets/player/assets/sounds/foot-steps/grass/9.mp3" id="20_lla4s"]
 [ext_resource type="AudioStream" uid="uid://1aafkuvqktdt" path="res://scenes/world/assets/player/assets/sounds/foot-steps/grass/10.mp3" id="21_56qd7"]
+[ext_resource type="PackedScene" uid="uid://bhtan1dhdi7df" path="res://scenes/world/assets/player/assets/flashlight/flashlight.tscn" id="22_aj5xh"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hoihs"]
 
@@ -45,6 +46,12 @@ shape = SubResource("ConvexPolygonShape3D_8vynq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.600857, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206029, 0)
+
+[node name="Item" type="Node3D" parent="Head"]
+
+[node name="Flashlight" parent="Head/Item" instance=ExtResource("22_aj5xh")]
+transform = Transform3D(0.993657, 0, 0.112458, 0, 1, 0, -0.112458, 0, 0.993657, 0.524781, -0.301871, -0.562772)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamMP3_1rnup")
