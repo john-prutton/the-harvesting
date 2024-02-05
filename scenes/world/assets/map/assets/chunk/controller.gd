@@ -1,4 +1,4 @@
-
+@tool
 class_name Chunk
 extends StaticBody3D
 

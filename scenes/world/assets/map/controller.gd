@@ -32,6 +32,9 @@ func _generate_map():
 	for x in range(-MAP_SIZE/2, MAP_SIZE/2, CHUNK_SIZE):
 		for z in range(-MAP_SIZE/2, MAP_SIZE/2, CHUNK_SIZE):
 			_generate_chunk(Vector3(x, 0, z) + offset)
+	
+		
+			
 
 func _generate_chunk(_position: Vector3):
 	# spawn chunk & add to scene
