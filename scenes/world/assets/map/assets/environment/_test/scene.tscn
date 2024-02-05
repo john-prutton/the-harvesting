@@ -1,13 +1,85 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmopid4mojlwy"]
+[gd_scene load_steps=9 format=3 uid="uid://cmopid4mojlwy"]
 
 [ext_resource type="PackedScene" uid="uid://beqx0jml87seb" path="res://scenes/world/assets/map/assets/environment/assets/tree/prefab.blend" id="1_ijb8g"]
 [ext_resource type="Script" path="res://scenes/world/assets/map/assets/environment/_test/controller.gd" id="1_j4ddt"]
 [ext_resource type="PackedScene" uid="uid://cbugrl8d1pf5j" path="res://scenes/world/assets/map/assets/environment/scene.tscn" id="3_wbtf2"]
+[ext_resource type="Material" uid="uid://c1h6qmm38v3e8" path="res://scenes/world/assets/map/assets/chunk/assets/materials/ground/material.tres" id="4_426s6"]
+[ext_resource type="PackedScene" uid="uid://ke6e7vbmojpm" path="res://scenes/world/assets/player/scene.tscn" id="5_chngl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6n0p7"]
+sky_top_color = Color(0.0627451, 0.0666667, 0.0588235, 1)
+sky_horizon_color = Color(0.105882, 0.0627451, 0.0235294, 1)
+sky_cover_modulate = Color(0.513726, 0.513726, 0.513726, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.164706, 0.117647, 0.0196078, 1)
+ground_curve = 0.121257
+ground_energy_multiplier = 0.96
+
+[sub_resource type="Sky" id="Sky_xbf53"]
+sky_material = SubResource("ProceduralSkyMaterial_6n0p7")
+
+[sub_resource type="Environment" id="Environment_e0b27"]
+background_mode = 2
+sky = SubResource("Sky_xbf53")
+ambient_light_source = 2
+ambient_light_color = Color(0.14902, 0.14902, 0.14902, 1)
+ambient_light_energy = 0.4
+reflected_light_source = 1
+tonemap_mode = 1
+tonemap_exposure = 0.66
+tonemap_white = 4.91
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.21
+volumetric_fog_albedo = Color(0, 0, 0, 1)
+volumetric_fog_emission = Color(0.027451, 0.0313726, 0.0156863, 1)
+volumetric_fog_detail_spread = 1.23114
 
 [node name="Test" type="Node3D"]
 script = ExtResource("1_j4ddt")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.149535, 0.727821, -0.669265, 0, 0.676876, 0.736097, 0.988756, 0.110073, -0.101217, 0, 0, 0)
+light_color = Color(0.0196078, 0.0196078, 0.00784314, 1)
+light_energy = 1.645
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_blur = 2.371
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_e0b27")
+
 [node name="prefab" parent="." instance=ExtResource("1_ijb8g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.731519)
 visible = false
 
 [node name="Environment" parent="." instance=ExtResource("3_wbtf2")]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(500, 0, 0, 0, 0.2, 0, 0, 0, 500, 0, 0, 0)
+use_collision = true
+material = ExtResource("4_426s6")
+
+[node name="Player" parent="." instance=ExtResource("5_chngl")]
+
+[node name="Camera3D" parent="Player/Head" index="0"]
+far = 53.34
+
+[node name="SpotLight3D" parent="Player/Head/Item/Flashlight" index="1"]
+light_volumetric_fog_energy = 1.095
+light_size = 0.232
+spot_range = 23.479
+spot_attenuation = 1.56916
+spot_angle = 29.38
+
+[node name="OmniLight3D" parent="Player/Head/Item/Flashlight" index="2"]
+omni_range = 2.943
+omni_attenuation = 0.153894
+
+[node name="AudioStreamPlayer3D" parent="Player" index="3"]
+volume_db = 37.512
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(3.61564, 0.00448186, -0.000385935, -0.00420944, 3.84911, 0.00040438, 0.00139711, -0.00155478, 1, 0, 1.98304, -6.08247)
+
+[editable path="Player"]
+[editable path="Player/Head/Item/Flashlight"]
