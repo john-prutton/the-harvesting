@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c3e4cwe7xxr80"
-path="res://.godot/imported/grass.blend-c83787d602e70d22daf7f6d328eab845.scn"
+path="res://.godot/imported/prefab.blend-065077875e3d5203bf6d2f1038f5fc53.scn"
 
 [deps]
 
-source_file="res://scenes/world/assets/map/assets/environment/assets/grass/grass.blend"
-dest_files=["res://.godot/imported/grass.blend-c83787d602e70d22daf7f6d328eab845.scn"]
+source_file="res://scenes/world/assets/map/assets/environment/assets/grass/prefab.blend"
+dest_files=["res://.godot/imported/prefab.blend-065077875e3d5203bf6d2f1038f5fc53.scn"]
 
 [params]
 
