@@ -1,63 +1,55 @@
 @tool
 class_name CustomEnvironment
 extends Node3D
+@onready var map = $".."
+var map_size: int
 
-const tree_prefab := preload("res://scenes/world/assets/map/assets/environment/assets/tree/prefab.blend")
-const grass_prefab := preload("res://scenes/world/assets/map/assets/environment/assets/grass/grass.blend")
+const tree = [preload("res://scenes/world/assets/map/assets/environment/assets/tree/prefab.blend"), 0.01, 5]
 
-func spawn_trees(n: int, point: Vector3, radius: float, min_gap: float):
-	var spawned := 0
-	var fails := 0
-	var max_fails := 1000
-	
-	while (spawned < n and fails < max_fails):
-		var pos := _generate_random_position(point, radius)
-		var is_valid := _is_valid_position(pos, min_gap)
-		if (not is_valid): 
-			fails += 1
+func spawn_environment(_map_size: int):
+	map_size = _map_size
+	var positions: Array[Vector3] = []
+	var prefab = tree[0]
+	var density = tree[1]
+	var gap = tree[2]
+	var n = density *  pow(map_size, 2)
+	var spawned = 0
+	var failed = 0
+	while spawned < n and failed < 100:
+		var pos = _generate_random_position()
+		if not _is_valid_position(pos, gap, positions):
+			failed += 1
 			continue
-		
-		var tree = tree_prefab.instantiate()
-		tree.global_position = pos
-		$Spawnables.add_child(tree)
+			
+		failed = 0
 		spawned += 1
+		_spawn_prefab(prefab, pos)
 		
-	print("spawned: %d, fails: %d" % [spawned, fails])
+	print("spawned: %d, failed: %d" % [spawned, failed])
 
-func spawn_grass(n: int, point: Vector3, radius: float, min_gap: float):
-	var spawned := 0
-	var fails := 0
-	var max_fails := 1000
+func _generate_random_position() -> Vector3:
+	var x = randf() * map_size - map_size/2
+	var z = randf() * map_size - map_size/2
+	var pos = Vector3(x,0,z)
+	pos.y = map.calculate_vertex_height(pos)
 	
-	while (spawned < n and fails < max_fails):
-		var pos := _generate_random_position(point, radius)
-		var is_valid := _is_valid_position(pos, min_gap)
-		if (not is_valid): 
-			fails += 1
-			continue
-		
-		var grass = grass_prefab.instantiate()
-		grass.global_position = pos
-		grass.rotate_y(randf_range(0, 2*PI))
-		$Spawnables.add_child(grass)
-		spawned += 1
-		
-	print("spawned: %d, fails: %d" % [spawned, fails])
-
-func _generate_random_position(point: Vector3, radius: float) -> Vector3:
-	var theta = randf() * 2 * PI
-	var rad = randf() * radius
-	var pos = rad * Vector3(cos(theta), 0, sin(theta))
 	return pos
 
-func _is_valid_position(point: Vector3, min_gap: float) -> bool:
+func _is_valid_position(pos: Vector3, min_gap: float, positions: Array[Vector3]) -> bool:
 	var is_valid := true
 	
-	for i in $Spawnables.get_children():
-		var d = ((i as Node3D).position - point).length()
+	for _pos in positions:
+		var d = (_pos - pos).length()
 		
 		if (d < min_gap):
 			is_valid = false
 			break
 	
 	return is_valid
+
+func _spawn_prefab(prefab:PackedScene, pos: Vector3):
+	var _prefab = prefab.instantiate()
+	_prefab.global_position = pos
+	$Spawnables.add_child(_prefab)
+
+
