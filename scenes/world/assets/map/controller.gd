@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends Node3D
 
 const VERTEX_GAP: float = 1
@@ -20,8 +20,8 @@ const NOISE_LACUNARITY: float = 2.0
 var noise := FastNoiseLite.new()
 var surface_tool := SurfaceTool.new()
 
-const MAP_SIZE := 1000
-const PLATEAU_RADIUS := 200
+const MAP_SIZE := 50
+const PLATEAU_RADIUS := 100
 
 #environment
 @onready var environment: CustomEnvironment = $Environment
