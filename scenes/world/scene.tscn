@@ -8,26 +8,16 @@
 [node name="World" type="Node3D"]
 script = ExtResource("1_iv8td")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.149536, 0.856289, -0.494376, 0, 0.499998, 0.866027, 0.988756, 0.129502, -0.0747676, 0, 0, 0)
+light_color = Color(0.721569, 0.631373, 0.278431, 1)
+light_energy = 0.0
+shadow_enabled = true
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_51j7r")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.149535, 0.727821, -0.669265, 0, 0.676876, 0.736097, 0.988756, 0.110072, -0.101217, 0, 0, 0)
-visible = false
-light_color = Color(0.0980392, 0.0980392, 0.0509804, 1)
-light_energy = 1.645
-shadow_enabled = true
-shadow_bias = 0.0
-shadow_blur = 2.371
-sky_mode = 2
 
 [node name="Map" parent="." instance=ExtResource("2_lf4or")]
 
 [node name="Player" parent="." instance=ExtResource("3_hdw15")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 93.2758, 0)
-
-[node name="SpotLight3D" parent="Player/Head/Item/Flashlight" index="1"]
-spot_range = 105.796
-
-[editable path="Player"]
-[editable path="Player/Head/Item/Flashlight"]

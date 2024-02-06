@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends Node3D
 
 const VERTEX_GAP: float = 1
@@ -20,10 +20,13 @@ const NOISE_LACUNARITY: float = 2.0
 var noise := FastNoiseLite.new()
 var surface_tool := SurfaceTool.new()
 
-const MAP_SIZE := 1000
-const PLATEAU_RADIUS := 200
+const MAP_SIZE := 50
+const PLATEAU_RADIUS := 100
 
-func _ready(): _generate_map()
+#environment
+@onready var environment: CustomEnvironment = $Environment
+
+func _ready():_generate_map()
 
 func _generate_map():
 	noise.seed = randi()
@@ -33,8 +36,7 @@ func _generate_map():
 		for z in range(-MAP_SIZE/2, MAP_SIZE/2, CHUNK_SIZE):
 			_generate_chunk(Vector3(x, 0, z) + offset)
 	
-		
-			
+	environment.spawn_environment(MAP_SIZE)
 
 func _generate_chunk(_position: Vector3):
 	# spawn chunk & add to scene
@@ -65,7 +67,7 @@ func _generate_mesh(center: Vector3) -> ArrayMesh:
 			var offset := CHUNK_SIZE * Vector3(0.5, 0, 0.5)
 			var vertex_position := VERTEX_GAP * Vector3(x, 0, z) - offset
 			
-			vertex_position.y = _calculate_vertex_height(vertex_position+center)
+			vertex_position.y = calculate_vertex_height(vertex_position+center)
 			surface_tool.add_vertex(vertex_position)
 			
 			# if on the top or left edge, exit early
@@ -104,7 +106,7 @@ func _generate_mesh(center: Vector3) -> ArrayMesh:
 	
 	return array_mesh
 
-func _calculate_vertex_height(point: Vector3) -> float:
+func calculate_vertex_height(point: Vector3) -> float:
 	var noise_height := _calculate_noise_height(point)
 	noise_height = (1 + noise_height) / 2
 	var distance := inverse_lerp(0, PLATEAU_RADIUS, point.length())

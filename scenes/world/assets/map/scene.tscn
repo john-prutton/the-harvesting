@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://df0gywy6c6333"]
+[gd_scene load_steps=3 format=3 uid="uid://df0gywy6c6333"]
 
 [ext_resource type="Script" path="res://scenes/world/assets/map/controller.gd" id="1_08xhx"]
+[ext_resource type="PackedScene" uid="uid://cbugrl8d1pf5j" path="res://scenes/world/assets/map/assets/environment/scene.tscn" id="2_44xl2"]
 
 [node name="Map" type="Node3D"]
 script = ExtResource("1_08xhx")
 
 [node name="Chunks" type="Node" parent="."]
+
+[node name="Environment" parent="." instance=ExtResource("2_44xl2")]
