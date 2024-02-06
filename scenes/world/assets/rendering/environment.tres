@@ -1,16 +1,15 @@
 [gd_resource type="Environment" load_steps=2 format=3 uid="uid://cdyr6ghrtjwbl"]
 
-[sub_resource type="Sky" id="Sky_7wylu"]
+[ext_resource type="Sky" uid="uid://c1ffus82tuq8o" path="res://scenes/world/assets/rendering/sky/material.tres" id="1_qcosl"]
 
 [resource]
 background_mode = 2
-sky = SubResource("Sky_7wylu")
+sky = ExtResource("1_qcosl")
+ambient_light_source = 3
 reflected_light_source = 1
-tonemap_mode = 1
-tonemap_exposure = 0.66
-tonemap_white = 4.91
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.2058
-volumetric_fog_albedo = Color(0, 0, 0, 1)
-volumetric_fog_emission = Color(0.0666667, 0.0666667, 0.00392157, 1)
+volumetric_fog_density = 0.0441
+volumetric_fog_emission = Color(0.00392157, 0.0156863, 0.0352941, 1)
+volumetric_fog_length = 50.0
 volumetric_fog_detail_spread = 0.93303
+volumetric_fog_temporal_reprojection_enabled = false

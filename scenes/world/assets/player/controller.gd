@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+@onready var flashlight = $Head/Item/Flashlight/SpotLight3D
+
 var speed
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 8.0
@@ -44,7 +46,12 @@ func _unhandled_input(event):
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(80))
 		item.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(80))
-
+	
+	if event is InputEventMouseButton:
+		var is_clicked = Input.get_action_raw_strength("use_item") > 0
+		if !is_clicked: return
+		
+		flashlight.visible = not flashlight.visible
 
 func _physics_process(delta):
 	# Add the gravity.

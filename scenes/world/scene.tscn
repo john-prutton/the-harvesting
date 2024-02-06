@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bprab4p8ej6sa"]
+[gd_scene load_steps=6 format=3 uid="uid://bprab4p8ej6sa"]
 
 [ext_resource type="Script" path="res://scenes/world/controller.gd" id="1_iv8td"]
 [ext_resource type="Environment" uid="uid://cdyr6ghrtjwbl" path="res://scenes/world/assets/rendering/environment.tres" id="2_51j7r"]
 [ext_resource type="PackedScene" uid="uid://df0gywy6c6333" path="res://scenes/world/assets/map/scene.tscn" id="2_lf4or"]
 [ext_resource type="PackedScene" uid="uid://ke6e7vbmojpm" path="res://scenes/world/assets/player/scene.tscn" id="3_hdw15"]
+
+[sub_resource type="FogMaterial" id="FogMaterial_ot8ik"]
+density = 0.08
+edge_fade = 0.376405
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_iv8td")
@@ -17,7 +21,21 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_51j7r")
 
+[node name="FogVolume" type="FogVolume" parent="WorldEnvironment"]
+shape = 4
+material = SubResource("FogMaterial_ot8ik")
+
 [node name="Map" parent="." instance=ExtResource("2_lf4or")]
 
 [node name="Player" parent="." instance=ExtResource("3_hdw15")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 93.2758, 0)
+
+[node name="SpotLight3D" parent="Player/Head/Item/Flashlight" index="1"]
+visible = false
+light_volumetric_fog_energy = 2.0
+light_size = 0.355
+distance_fade_length = 10.0
+spot_angle = 51.67
+
+[editable path="Player"]
+[editable path="Player/Head/Item/Flashlight"]
