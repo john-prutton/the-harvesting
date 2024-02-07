@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rcds5mgiv2cv"
-path.s3tc="res://.godot/imported/Ground048_1K-PNG_NormalDX.png-0f1c254fab5dab682cc6136411931869.s3tc.ctex"
+uid="uid://cd05co1urtd41"
+path.s3tc="res://.godot/imported/Bark012_1K-JPG_NormalDX.jpg-8248aee40abd588aae6fe8cba1ae7f9d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://scenes/world/assets/map/assets/chunk/assets/materials/ground/assets/ground_048/Ground048_1K-PNG_NormalDX.png"
-dest_files=["res://.godot/imported/Ground048_1K-PNG_NormalDX.png-0f1c254fab5dab682cc6136411931869.s3tc.ctex"]
+source_file="res://scenes/world/assets/player/assets/axe/assets/materials/handle/Bark012_1K-JPG/Bark012_1K-JPG_NormalDX.jpg"
+dest_files=["res://.godot/imported/Bark012_1K-JPG_NormalDX.jpg-8248aee40abd588aae6fe8cba1ae7f9d.s3tc.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://scenes/world/assets/map/assets/chunk/assets/materials/ground/assets/ground_048/Ground048_1K-PNG_NormalDX.png"
+roughness/src_normal="res://scenes/world/assets/map/assets/environment/assets/tree/Bark012_1K-JPG/Bark012_1K-JPG_NormalDX.jpg"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
