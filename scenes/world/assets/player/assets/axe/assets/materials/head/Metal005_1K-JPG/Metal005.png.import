@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b7q0s8rqy2y3d"
-path="res://.godot/imported/Metal005.png-2f7335e452b8baca81515395e1fcbf2a.ctex"
+path="res://.godot/imported/Metal005.png-7fbcd10bc7fbde9a71f4b4f89f72fe56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/world/assets/player/assets/axe/materials/head/Metal005_1K-JPG/Metal005.png"
-dest_files=["res://.godot/imported/Metal005.png-2f7335e452b8baca81515395e1fcbf2a.ctex"]
+source_file="res://scenes/world/assets/player/assets/axe/assets/materials/head/Metal005_1K-JPG/Metal005.png"
+dest_files=["res://.godot/imported/Metal005.png-7fbcd10bc7fbde9a71f4b4f89f72fe56.ctex"]
 
 [params]
 

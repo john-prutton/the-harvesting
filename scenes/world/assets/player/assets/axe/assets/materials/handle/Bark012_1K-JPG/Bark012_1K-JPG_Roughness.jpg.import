@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu7q6ts5m3gop"
-path.s3tc="res://.godot/imported/Metal005_1K-JPG_Displacement.jpg-52d27203b0333c699f709ae94653b40b.s3tc.ctex"
+uid="uid://bkp5r5wg8c2e4"
+path.s3tc="res://.godot/imported/Bark012_1K-JPG_Roughness.jpg-3d0d54e12d8ef5b1c793b9cbee0fe179.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://scenes/world/assets/player/assets/axe/materials/head/Metal005_1K-JPG/Metal005_1K-JPG_Displacement.jpg"
-dest_files=["res://.godot/imported/Metal005_1K-JPG_Displacement.jpg-52d27203b0333c699f709ae94653b40b.s3tc.ctex"]
+source_file="res://scenes/world/assets/player/assets/axe/assets/materials/handle/Bark012_1K-JPG/Bark012_1K-JPG_Roughness.jpg"
+dest_files=["res://.godot/imported/Bark012_1K-JPG_Roughness.jpg-3d0d54e12d8ef5b1c793b9cbee0fe179.s3tc.ctex"]
 
 [params]
 

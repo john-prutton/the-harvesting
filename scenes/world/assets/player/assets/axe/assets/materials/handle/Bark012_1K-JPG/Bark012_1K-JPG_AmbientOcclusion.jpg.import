@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crnvusyfaxl3g"
-path.s3tc="res://.godot/imported/Bark012_1K-JPG_Displacement.jpg-a845bde588309e8946e7a7e6e3783b4a.s3tc.ctex"
+uid="uid://beurgr1wqophp"
+path.s3tc="res://.godot/imported/Bark012_1K-JPG_AmbientOcclusion.jpg-6ac9e1e48e39002243d002714f8e0d1f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://scenes/world/assets/player/assets/axe/materials/handle/Bark012_1K-JPG/Bark012_1K-JPG_Displacement.jpg"
-dest_files=["res://.godot/imported/Bark012_1K-JPG_Displacement.jpg-a845bde588309e8946e7a7e6e3783b4a.s3tc.ctex"]
+source_file="res://scenes/world/assets/player/assets/axe/assets/materials/handle/Bark012_1K-JPG/Bark012_1K-JPG_AmbientOcclusion.jpg"
+dest_files=["res://.godot/imported/Bark012_1K-JPG_AmbientOcclusion.jpg-6ac9e1e48e39002243d002714f8e0d1f.s3tc.ctex"]
 
 [params]
 
