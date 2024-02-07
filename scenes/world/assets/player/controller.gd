@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 @onready var flashlight = $Head/Item/Flashlight/SpotLight3D
+@onready var axe = $Head/Item/Axe
 
 var speed
 const WALK_SPEED = 5.0
@@ -34,7 +35,6 @@ var gravity = 9.81
 @onready var item = $Head/Item
 @onready var audio_player = $AudioStreamPlayer3D
 
-
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	foot_steps = [gravel_footsteps,grass_footsteps]
@@ -48,10 +48,11 @@ func _unhandled_input(event):
 		item.rotation.x = clamp(camera.rotation.x, deg_to_rad(-60), deg_to_rad(80))
 	
 	if event is InputEventMouseButton:
-		var is_clicked = Input.get_action_raw_strength("use_item") > 0
-		if !is_clicked: return
+		var flash_used = Input.get_action_raw_strength("use_flashlight") > 0
+		flashlight.visible = not flashlight.visible if flash_used else flashlight.visible
 		
-		flashlight.visible = not flashlight.visible
+		var item_used = Input.get_action_raw_strength("use_item") > 0
+		if item_used: (axe.get_node("AnimationPlayer") as AnimationPlayer).play("use_item")
 
 func _physics_process(delta):
 	# Add the gravity.

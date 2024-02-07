@@ -21,15 +21,13 @@ distance_fade_begin = 0.0
 distance_fade_shadow = 3807.49
 distance_fade_length = 3738.9
 spot_attenuation = 0.176776
-spot_angle = 24.17
+spot_angle = 39.17
 spot_angle_attenuation = 0.57435
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, -0.000749216, 0.000434793, 0.000749579, 0.999999, -0.000836444, -0.000434166, 0.00083677, 1, 2.91038e-11, 0, -0.0159261)
 light_color = Color(0.941176, 0.890196, 0.694118, 1)
-light_energy = 0.419
-light_indirect_energy = 0.0
-light_volumetric_fog_energy = 0.0
+light_volumetric_fog_energy = 4.667
 light_bake_mode = 1
 shadow_enabled = true
 shadow_opacity = 0.82
