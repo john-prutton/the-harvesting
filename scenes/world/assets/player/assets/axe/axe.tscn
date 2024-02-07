@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://de2on87gmi0fq"]
+
+[ext_resource type="PackedScene" uid="uid://bhei5nonerh4j" path="res://scenes/world/assets/player/assets/axe/prefab.blend" id="1_g0o7o"]
+
+[node name="Axe" type="Node3D"]
+
+[node name="prefab" parent="." instance=ExtResource("1_g0o7o")]

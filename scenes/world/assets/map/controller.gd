@@ -1,4 +1,4 @@
-@tool
+
 extends Node3D
 
 const VERTEX_GAP: float = 1
