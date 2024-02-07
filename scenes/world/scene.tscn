@@ -35,6 +35,9 @@ material = SubResource("FogMaterial_ot8ik")
 [node name="Player" parent="." instance=ExtResource("3_hdw15")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 93.2758, 0)
 
+[node name="Camera3D" parent="Player/Head" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206032, 0)
+
 [node name="SpotLight3D" parent="Player/Head/Item/Flashlight" index="1"]
 visible = false
 light_volumetric_fog_energy = 2.0
