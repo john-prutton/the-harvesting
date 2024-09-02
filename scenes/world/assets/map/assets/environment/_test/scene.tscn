@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/world/assets/map/assets/environment/_test/controller.gd" id="1_j4ddt"]
 [ext_resource type="PackedScene" uid="uid://cbugrl8d1pf5j" path="res://scenes/world/assets/map/assets/environment/scene.tscn" id="3_wbtf2"]
 [ext_resource type="Material" uid="uid://c1h6qmm38v3e8" path="res://scenes/world/assets/map/assets/chunk/assets/materials/ground/material.tres" id="4_426s6"]
-[ext_resource type="PackedScene" uid="uid://ke6e7vbmojpm" path="res://scenes/world/assets/player/scene.tscn" id="5_chngl"]
+[ext_resource type="PackedScene" uid="uid://ke6e7vbmojpm" path="res://scenes/world/assets/player/assets/model/old_scene.tscn" id="5_chngl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6n0p7"]
 sky_top_color = Color(0.0627451, 0.0666667, 0.0588235, 1)

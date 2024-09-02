@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
-@onready var flashlight = $"WGT-rig_head"/Item/Flashlight/SpotLight3D
-@onready var axe = $"WGT-rig_head"/Item/Axe
+@onready var flashlight = $Head/Item/Flashlight
+@onready var axe = $Head/Item/Axe
 
 var speed
 const WALK_SPEED = 5.0
@@ -27,16 +27,14 @@ var foot_steps: Array[Array]
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.3
 
-#animation
-@onready var animationTree : AnimationTree = $AnimationTree
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 9.81
 
-@onready var head = $"WGT-rig_head"
-@onready var camera = $Camera3D
-#@onready var item = $"WGT-rig_head/Item"
-#@onready var audio_player = $AudioStreamPlayer3D
+@onready var head = $Head
+@onready var camera = $Head/Camera3D
+@onready var item = $Head/Item
+@onready var audio_player = $AudioStreamPlayer3D
+@onready var character = $Head/prefab
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -55,10 +53,6 @@ func _unhandled_input(event):
 		
 		var item_used = Input.get_action_raw_strength("use_item") > 0
 		if item_used: (axe.get_node("AnimationPlayer") as AnimationPlayer).play("use_item")
-	
-	if event is InputEvent:
-		if Input.is_action_just_pressed("jump"):	
-			animationTree["parameters/conditions/is_idle"] = true
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -99,6 +93,7 @@ func _physics_process(delta):
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	
 	move_and_slide()
+	character.update_animation(velocity)
 
 
 func _headbob(time) -> Vector3:
@@ -116,5 +111,5 @@ func _headbob(time) -> Vector3:
 
 func _handle_audio():
 	var sound = foot_steps[1].pick_random()
-	#audio_player.stream = sound
-	#audio_player.play()
+	audio_player.stream = sound
+	audio_player.play()

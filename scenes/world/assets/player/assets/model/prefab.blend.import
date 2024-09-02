@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/prefab.blend-6f1f1a52c4c8f65bec32e72a26638ebc
 
 [params]
 
-nodes/root_type="CharacterBody3D"
+nodes/root_type="Node3D"
 nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
